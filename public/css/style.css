@@ -49,6 +49,7 @@ form input {
 	width: 500px;
 	padding: 11px 0 11px 15px;
 	font-size: 15px;
+	outline: none;
 }
 .logo {
 	font-size: 38px;
