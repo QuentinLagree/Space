@@ -1,12 +1,41 @@
 <%- include("./template/header.ejs") -%>
 
 <% if (typeof manager !== "undefined") {%>
-	<div class="container manager">
-		<p>Connecte toi en saisissant ton adresse mail, si tu n'as pas de compte <a href="/register">inscris toi</a> !</p>
-		<form>
-			<input type="email" name="email" placeholder="abc@exemple.com">
-			<button class="btn">Valider</button>
-		</form>
-	</div>
+	<% switch (manager) {
+		case 'login' : %>
+			<div class="container manager">
+				<p class="baseline">Connecte toi en saisissant ton adresse mail, si tu n'as pas de compte <a href="/register">inscris toi</a> !</p>
+				<form action="/" method="POST">
+					<%- include("./template/error.ejs") -%>
+					<%- include("./template/success.ejs") -%>
+					<input type="email" name="email" placeholder="abc@exemple.com">
+					<button class="btn">Valider</button>
+				</form>
+			</div>
+		     <% break;
+		case 'register' : %>
+		    	<div class="container manager">
+				<p class="baseline">Inscris toi en saisissant ton adresse mail, si tu as un compte <a href="/">connecte toi</a> !</p>
+				<form action="/register" method="POST">
+					<%- include("./template/error.ejs") -%>
+					<%- include("./template/success.ejs") -%>
+					<input type="email" name="email" placeholder="abc@exemple.com">
+					<button class="btn">Valider</button>
+				</form>
+			</div>
+		     <% break;
+		     case 'token' : %>
+			<div class="container manager">
+				<p class="baseline">Un mail est envoyé à l'adresse : <%= email %></p>
+				<form action="/" method="POST">
+					<%- include("./template/error.ejs") -%>
+					<%- include("./template/success.ejs") -%>
+					<input type="email" name="email" placeholder="abc@exemple.com">
+					<button class="btn">Valider</button>
+				</form>
+			</div>
+		     <% break;
+		} %>
+	
 <% } %>
 </body>

@@ -14,22 +14,21 @@
 	<header class="header <%= manager %>">
 		<section>
 			<h1 class="logo">space</h1>
-			<h1 class="logo cover">space</h1>
 		</section>
 		<section>
-			<a class="link" href="">
-				<% switch (manager) {
-					case 'login' : %>
-						Inscription
-					     <% break;
-					case 'register' : %>
-					     Connection
-					     <% break;
-					case 'token' || 'moreInfo' : %>
-					     
-					     <% break;
-					} %>
+			<a class="link" href="/<%= manager %>">
+				
 				</a>
+			<% switch (manager) {
+				case 'login' : %>
+					<a class="link" href="/register">Inscription</a>
+				     <% break;
+				case 'register' : %>
+				     <a class="link" href="/login">Connection</a>
+				     <% break;
+				case 'token' || 'moreInfo' : %>
+				     <% break;
+				} %>
 			<div class="flag"></div>
 			</section>
 		</header>

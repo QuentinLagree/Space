@@ -1,6 +1,9 @@
 function controllers(app) {
-	require("./loginController")(app)
+	let registerAccount = require("./loginController")
+	let loginAccount = require("./registerController")
 
+	loginAccount(app)
+	registerAccount(app)
 }
 
 

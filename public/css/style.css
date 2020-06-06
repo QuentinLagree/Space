@@ -45,12 +45,17 @@ form {
 }
 
 form input {
-	border: 1px solid #2FB4F9;
+	border: 1px solid rgba(0, 0, 0, 0.3);
 	border-radius: 7px;
 	width: 500px;
 	padding: 11px 0 11px 15px;
 	font-size: 15px;
 	outline: none;
+	transition: .3s;
+}
+
+form input:focus {
+	border-color: #2FB4F9;
 }
 
 form button {
@@ -58,6 +63,7 @@ form button {
 	padding: 15px 0;
 	background: none;
 	border: 1px solid #2FB4F9;
+	outline: none;
 	margin-top: 15px;
 	text-transform: uppercase;
 	color: #2FB4F9;
@@ -73,33 +79,33 @@ form button:hover {
 	color: #fff;
 }
 
+form .container-error,
+form .container-success {
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+
+form .container-error p {
+	height: auto;
+	margin: 0 0 5px 0;
+	padding: 0;
+	color: #EB2424;
+}
+
+form .container-success p {
+	height: auto;
+	margin: 0 0 5px 0;
+	padding: 0;
+	color: #3AEB70;
+}
+
 .logo {
 	font-size: 38px;
 	font-weight: 700;
 	color: #000;
 	text-transform: uppercase;
-	cursor: pointer;
-}
-
-.logo.cover {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 0;
-	color: #1A6BE3;
-	overflow: hidden;
-	z-index: 99;
-	transition: .3s;
-}
-
-.logo.cover:hover {
-	width: 100%;
-}
-
-
-
-.logo:hover ~ .logo.cover {
-	width: 100%;
+	cursor: default;
 }
 
 header .link {
@@ -141,13 +147,13 @@ header .link:hover {
 
 .container.manager {
 	position: relative;
-	margin: 215px auto 0 auto;
+	margin: 10% auto 0 auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
 
-.container.manager p {
+.container.manager p.baseline {
 	width: 307px;
 	height: 76px;
 	font-size: 15px;
