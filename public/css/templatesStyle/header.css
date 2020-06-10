@@ -1,0 +1,67 @@
+header {
+	position: relative;
+	margin: 5% auto 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 70%;
+	height: 36px;
+}
+
+header section:nth-child(1) {
+	display: flex;
+	align-items: center;
+	position: relative;
+	width: auto;
+	height: auto;
+}
+
+header section:nth-child(1) .logo {
+	font-size: 38px;
+	font-weight: 700;
+	color: #000;
+	text-transform: uppercase;
+	cursor: default;
+}
+
+header section:nth-child(2) {
+	display: flex;
+	flex-direction: row;
+	width: 23%;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+
+header section:nth-child(2) .link {
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 20px;
+	font-weight: 500;
+	text-decoration: none;
+	text-transform: capitalize;
+	transition: .3s;
+}
+
+header section:nth-child(2) .link:hover { color: #000; }
+
+header section:nth-child(2) .flag {
+	position: relative;
+	width: 40px;
+	height: 20px;
+	background-color: #fff;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.31);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+header section:nth-child(2) .flag:before, .flag:after {
+	content: '';
+	width: 13px;
+	height: 100%;
+}
+
+header section:nth-child(2) .flag:before { background: #1A6BE3; }
+
+header section:nth-child(2) .flag:after { background: #E31A1A; }

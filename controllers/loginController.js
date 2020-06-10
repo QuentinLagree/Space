@@ -1,7 +1,12 @@
 login = (app) => {
 	app.route("/")
 		.get((request, response) => {
-			response.render("account", {manager: "login"})
+			if (request.session.connect === true) {
+				response.redirect("/logout")
+			} else {
+				request.session.mail = undefined
+				response.render("account", {manager: "login"})
+			}
 		})
 		.post((request, response) => {
 			require("./functions/loginFunc")(request, response)
@@ -15,7 +20,17 @@ login = (app) => {
 
 	app.route("/login-token")
 		.get((request, response) => {
-			response.render("account", {manager: "token", email: request.session.mail})
+			if (request.session.mail === undefined) {
+				response.redirect("/")
+			} else if (request.session.connect === true) {
+				response.redirect("/logout")
+			} else{
+				response.render("account", {manager: "token", email: request.session.mail})
+			}
+		})
+
+		.post((request,response) => {
+			require("./functions/confirmFunc")(request, response)
 		})
 }
 

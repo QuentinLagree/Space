@@ -3,6 +3,7 @@
 <head>
 	<title>Space</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/assets/css/templatesStyle/header.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
 <%if (typeof manager !== "undefined") { %>
@@ -23,7 +24,7 @@
 				case 'register' : %>
 				     <a class="link" href="/login">Connection</a>
 				     <% break;
-				case 'token' || 'moreInfo' : %>
+				case 'token' || 'logout' : %>
 				     <% break;
 				} %>
 			<div class="flag"></div>

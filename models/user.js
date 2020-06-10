@@ -15,7 +15,7 @@ class User {
 	}
 
 	static create (email, callback) {
-		connection.query("INSERT INTO users SET email = ?", [email], (error, result) => {
+		connection.query("INSERT INTO users SET email = ?, token = ?", [email, randomstring.generate({ length: 60 })], (error, result) => {
 			if (error) throw error
 			callback(result)
 		})
@@ -30,6 +30,13 @@ class User {
 
 	static findByEmail (email, callback) {
 		connection.query("SELECT * FROM users WHERE email = ?", [email], (error, users) => {
+			if (error) throw error
+			callback(new User(users[0]))
+		})
+	}
+
+	static findByEmailAndToken (token, email, callback) {
+		connection.query("SELECT * FROM users WHERE email = ? AND token = ?", [email, token], (error, users) => {
 			if (error) throw error
 			callback(new User(users[0]))
 		})

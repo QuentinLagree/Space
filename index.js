@@ -4,6 +4,8 @@ let express = require("express")
 let ejs = require("ejs")
 let bodyParser = require("body-parser")
 let session = require('express-session')
+let moment = require("moment");
+let months = require("months")
 let app = express()
 
 app.set("view engine","ejs");
@@ -31,7 +33,12 @@ if (process.env.NODE_ENV === "production") {
 
 
 app.listen(8080, () => {
+	let now = new Date()
+	let date = new Date()
+	date.setTime(now.getTime() - 7*24*3600000)
+	date = moment().format("YYYY-MM-DD")
 	if (process.env.NODE_ENV !== "production") {
 		console.log("Le serveur est lancé sur le port 8080 ! : http://localhost:8080/")
+		console.log(new Date().getFullYear() - 100)
 	}
 })

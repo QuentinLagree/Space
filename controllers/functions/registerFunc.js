@@ -2,7 +2,7 @@ let register = (request, response) => {
 	let User = require("../../models/User")
 	let email = request.body.email;
 	if (email === '' || email === undefined) {
-		request.flash("error", "Ce champs n'est pas saisit")
+		request.flash("error", "Ce champ n'est pas saisit")
 		response.redirect("/register")
 	} else {
 		User.all(email, (users) => {
