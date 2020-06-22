@@ -4,7 +4,10 @@ logout = (app) => {
 			if (request.session.connect === false) {
 				response.redirect("/login")
 			} else {
-				response.render("account", {manager: 'logout'})
+				let data = {
+					manager: 'logout'
+				}
+				response.render("account", {data: data})
 			}
 		})
 		.post((request, response) => {

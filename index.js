@@ -26,19 +26,14 @@ controllers(app)
 
 
 if (process.env.NODE_ENV === "production") {
-	console.log("Le serveur est lancé !")
+	console.log("Le serveur est lancé.")
 } else {
-	console.log("Le serveur est en développement !")
+	console.log("Le serveur est en développement.")
 }
 
 
 app.listen(8080, () => {
-	let now = new Date()
-	let date = new Date()
-	date.setTime(now.getTime() - 7*24*3600000)
-	date = moment().format("YYYY-MM-DD")
 	if (process.env.NODE_ENV !== "production") {
-		console.log("Le serveur est lancé sur le port 8080 ! : http://localhost:8080/")
-		console.log(new Date().getFullYear() - 100)
+		console.log("Le serveur est lancé sur le port 8080 : http://localhost:8080/")
 	}
 })

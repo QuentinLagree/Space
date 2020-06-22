@@ -5,7 +5,10 @@ login = (app) => {
 				response.redirect("/logout")
 			} else {
 				request.session.mail = undefined
-				response.render("account", {manager: "login"})
+				let data = {
+					manager: 'login'
+				}
+				response.render("account", {data: data})
 			}
 		})
 		.post((request, response) => {
@@ -25,7 +28,11 @@ login = (app) => {
 			} else if (request.session.connect === true) {
 				response.redirect("/logout")
 			} else{
-				response.render("account", {manager: "token", email: request.session.mail})
+				let data = {
+					manager: 'token',
+					email: request.session.mail
+				}
+				response.render("account", {data: data})
 			}
 		})
 

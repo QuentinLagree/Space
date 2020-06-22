@@ -1,10 +1,11 @@
 let register = (request, response) => {
-	let User = require("../../models/User")
+	let User;
 	let email = request.body.email;
 	if (email === '' || email === undefined) {
 		request.flash("error", "Ce champ n'est pas saisit")
 		response.redirect("/register")
 	} else {
+		User = require("../../models/User")
 		User.all(email, (users) => {
 			if (users.length === 0) {
 				User.create(email, () => {

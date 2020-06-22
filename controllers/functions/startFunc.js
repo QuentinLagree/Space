@@ -1,34 +1,29 @@
 let start = (request, response) => {
-	let User = require("../../models/User")
-	let name = request.body.name
-	let firstname = request.body.firstName
-	let password = request.body.password
-	let passwordconfirm = request.body.confirm_password
-	let born = request.body.born
-	let country = request.body.country
 
-	if (name === '' || name === undefined) {
-		request.flash("error", "Le nom n'est pas saisit")
+	let User = require("../../models/User")
+	
+
+	checkfields = require("./helpFunctions/checkFields")(request.body)
+
+	if (checkfields.error) {
+		request.session.values = checkfields.values
+		request.flash("error", "Un des champs n'est pas saisit", checkfields.field)
 		response.redirect("/start")
-	} else if (firstname === '' || firstname === undefined) {
-		request.flash("error", "Le prénom n'est pas saisit")
-		response.redirect("/start")
-	} else if (password === '' || password === undefined) {
-		request.flash("error", "Le mot de passe n'est pas saisit")
-		response.redirect("/start")
-	} else if (passwordconfirm === '' || passwordconfirm === undefined) {
-		request.flash("error", "Le mot de passe de confirmation n'est pas saisit")
-		response.redirect("/start")
-	} else if (password !== passwordconfirm) {
-		request.flash("error", "Le mot de passe et le mot de passe de confirmation sont incorrect")
-		response.redirect("/start")
-	} else if (born === '' || born === undefined) {
-		request.flash("error", "La date de naissance n'est pas saisit")
-		response.redirect("/start")
-	} else if (country === '' || country === undefined) {
-		request.flash("error", "Le pays n'est pas saisit")
 	} else {
-		response.redirect("/start?confirm=true")
+		request.session.values = checkfields.values
+		if (request.body.password !== request.body.confirm_password) {
+			request.flash("error", "Le mot de passe et le mot de passe de confirmation ne correspondent pas", "confirm_password")
+			response.redirect("/start")
+		} else {
+			User.startUpdate(request.body.name, request.body.firstname, request.body.day, request.body.month, request.body.year, request.body.country, request.body.password, request.session.mail, () => {
+				User.findByEmail(request.session.mail, (user) => {
+					console.log(user)
+					request.session.user = user
+					request.session.starter = true
+					response.redirect("/profile/" + user.uuid)
+				})
+			})
+		}
 	}
 }
 

@@ -1,21 +1,58 @@
 let connection = require("../config/database")
 let randomstring = require("randomstring");
 let mailer = require("../config/mail")
+let bcrypt = require("bcrypt")
 
 class User {
 	constructor(user) {
 		this.user = user
 	}
 
+	get id () {
+		return this.user.id
+	}
+
 	get email () {
 		return this.user.email
 	}
+
+	get password () {
+		return this.user.password
+	}
+
 	get token () {
 		return this.user.token
 	}
 
+	get uuid () {
+		return this.user.uuid
+	}
+
+	get name () {
+		return this.user.name
+	}
+
+	get firstname () {
+		return this.user.firstname
+	}
+
+	get born () {
+		return this.user.born.split("/")
+	}
+
+	get country () {
+		return this.user.country
+	}
+
+	get starter () {
+		return this.user.starter
+	}
+
+
+
+
 	static create (email, callback) {
-		connection.query("INSERT INTO users SET email = ?, token = ?", [email, randomstring.generate({ length: 60 })], (error, result) => {
+		connection.query("INSERT INTO users SET email = ?, token = ?, uuid = ?", [email, randomstring.generate({ length: 60 }), randomstring.generate({ length: 100 })], (error, result) => {
 			if (error) throw error
 			callback(result)
 		})
@@ -28,8 +65,25 @@ class User {
 		})
 	}
 
+	static startUpdate(name, firstname, day, month, year, country, password, email, callback) {
+		let born = day + "/" + month + "/" + year
+		bcrypt.hash(password, 10, (error, hash) => {
+			connection.query("UPDATE users SET password = ?, name = ?, firstname = ?, born = ?, country = ?, starter = true WHERE email = ?", [hash, name, firstname, born, country, email], (error, result) => {
+				if (error) throw error
+				callback(result)
+			})
+		});
+	}
+
 	static findByEmail (email, callback) {
 		connection.query("SELECT * FROM users WHERE email = ?", [email], (error, users) => {
+			if (error) throw error
+			callback(new User(users[0]))
+		})
+	}
+
+	static findByUuid (uuid, callback) {
+		connection.query("SELECT * FROM users WHERE uuid = ?", [uuid], (error, users) => {
 			if (error) throw error
 			callback(new User(users[0]))
 		})

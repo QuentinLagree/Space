@@ -1,3 +1,25 @@
+.error {
+	border-color: #EB2424 !important;
+}
+
+.custom-select.error .select-selected {
+	border-color: #EB2424 !important;
+}
+
+.custom-select.error .select-selected.select-arrow-active {
+	border-color: #EB2424 !important;
+	border-bottom-color: transparent !important;
+}
+
+.custom-select.error .select-items {
+	border-color: #EB2424 !important;
+	border-top-color: transparent !important;
+}
+
+.custom-select.error .select-items.select-hide {
+	border-bottom-color: transparent !important;
+}
+
 body {
 	background-color: #fff;
 	font-family: "Roboto", sans-serif;
@@ -24,11 +46,12 @@ body.manager div.container.manager p.baseline {
 	width: auto;
 	height: 76px;
 	font-size: 15px;
+	filter: saturate(2);
 }
 
 body.manager div.container.manager p a{
 	text-decoration: none;
-	color: #2FB4F9;
+	color: #2f7092;
 }
 
 body.manager div.container.manager p a:hover{ text-decoration: underline; }
@@ -70,7 +93,7 @@ body.manager form input{
 	transition: .3s;
 }
 
-body.manager form input[type="password"] { width: calc(100% - 15px); }
+body.manager form input.inputPass, body.manager form input.inputPassConfirm { width: calc(100% - 15px); }
 
 body.manager form input[type="date"] { 
 	padding: 7px 0 11px 15px; 
@@ -104,6 +127,13 @@ body.manager form button:hover {
 	color: #fff;
 }
 
+body.manager form button:active {
+	background: #2FB4F9;
+	border: 1px solid #2FB4F9;
+	color: #fff;
+	transform: scale(1.05);
+}
+
 body.manager form .selectCountry {
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	border-radius: 7px;
@@ -124,14 +154,15 @@ body.manager .row input:nth-child(2) { margin-left: 10px; }
 }
 
 .row,
-input[type="password"] {
+input.inputPass,
+input.inputPassConfirm {
 	margin-bottom: 20px;
 }
 .custom-select {
   position: relative;
   font-family: Arial;
   width: 500px;
-  margin-right: 27px
+  margin-right: 27px;
 }
 
 .custom-select select {
@@ -172,7 +203,8 @@ input[type="password"] {
 	border-color: #2FB4F9;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
-	border-bottom-color: transparent;
+	border-bottom-color: transparent !important;
+	cursor: default;
 }
 
 .select-items div, .select-selected {
@@ -196,10 +228,11 @@ input[type="password"] {
   transition-delay: .1s;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-color: #2FB4F9;
-  border-top-color: transparent;
+  border-top-color: transparent !important;
 }
 
 .select-items div {
+	  cursor: default;
 	padding: 10px 0;
 	padding-left: 15px;
 }
@@ -220,6 +253,7 @@ input[type="password"] {
 .select-items::-webkit-scrollbar-track {
   background: #fff; 
 }
+
  
 .select-items::-webkit-scrollbar-thumb {
 	margin-right: 2px;
@@ -245,3 +279,18 @@ input[type="password"] {
 .row.between {
 	justify-content: space-between;
 }
+
+.togglePassShow, .togglePassHide {
+	position: absolute;
+    vertical-align: middle;
+    right: 10px;
+    top: 35%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.togglePassShow path { transition: .3s; }
+.togglePassHide path { transition: .3s; }
+
+.hide { display: none; }

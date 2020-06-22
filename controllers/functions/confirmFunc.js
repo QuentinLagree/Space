@@ -11,6 +11,7 @@ let confirm = (request, response) => {
 				response.redirect("/login-token")
 			} else {
 				User.updateToken(request.session.mail, () => {
+					request.session.user = user
 					request.session.connect = true
 					response.redirect("/start")
 				})

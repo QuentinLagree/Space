@@ -1,13 +1,16 @@
 let login = (request, response) => {
-	let User = require("../../models/User")
+	let User;
 	let email = request.body.email
-	if (email === '' || email === undefined) {
-		request.flash("error", "Ce champ n'est pas saisit")
+	checkfields = require("./helpFunctions/checkFields")(request.body)
+
+	if (checkfields.error) {
+		request.flash("error", "L'email n'est pas saisit", checkfields.field)
 		response.redirect("/")
 	} else {
+		User = require("../../models/User")
 		User.findByEmail(email, (user) => {
 			if (user["user"] === undefined) {
-				request.flash("error", "L'email est invalide")
+				request.flash("error", "L'email est invalide", "email")
 				response.redirect("/")
 			} else {
 				User.sendMail(user.email, user.token)

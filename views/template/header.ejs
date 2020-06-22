@@ -6,18 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/templatesStyle/header.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
-<%if (typeof manager !== "undefined") { %>
+<%if (typeof data.manager !== "undefined") { %>
 <body class="manager">
 <% } else { %>
 <body>
 <% } %>
-	<% if (typeof manager !== "undefined") {%>
-	<header class="header <%= manager %>">
+	<% if (typeof data.manager !== "undefined") {%>
+	<header class="header <%= data.manager %>">
 		<section>
 			<h1 class="logo">space</h1>
 		</section>
 		<section>
-			<% switch (manager) {
+			<% switch (data.manager) {
 				case 'login' : %>
 					<a class="link" href="/register">Inscription</a>
 				     <% break;

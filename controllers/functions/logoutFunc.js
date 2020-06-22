@@ -4,6 +4,7 @@ let logout = (request, response) => {
 	} else {
 		request.session.connect = false
 		request.session.user = undefined
+		request.session.starter = null
 		response.redirect("/")
 	}
 }

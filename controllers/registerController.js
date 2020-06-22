@@ -4,7 +4,10 @@ let register = (app) => {
 			if (request.session.connect === true) {
 				response.redirect("/logout")
 			} else {
-			response.render("account", {manager: 'register'})
+			let data = {
+				manager: 'register'
+			}
+			response.render("account", {data: data})
 			}
 		})
 

@@ -20,7 +20,7 @@ header section:nth-child(1) {
 header section:nth-child(1) .logo {
 	font-size: 38px;
 	font-weight: 700;
-	color: #000;
+	color: #444;
 	text-transform: uppercase;
 	cursor: default;
 }
@@ -35,7 +35,8 @@ header section:nth-child(2) {
 
 
 header section:nth-child(2) .link {
-	color: rgba(0, 0, 0, 0.5);
+	color: #444;
+	opacity: .6;
 	font-size: 20px;
 	font-weight: 500;
 	text-decoration: none;
@@ -43,7 +44,7 @@ header section:nth-child(2) .link {
 	transition: .3s;
 }
 
-header section:nth-child(2) .link:hover { color: #000; }
+header section:nth-child(2) .link:hover { color: #444; opacity: 1}
 
 header section:nth-child(2) .flag {
 	position: relative;
