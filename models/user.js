@@ -1,4 +1,4 @@
-let connection = require("../config/database")
+ let connection = require("../config/database")
 let randomstring = require("randomstring");
 let mailer = require("../config/mail")
 let bcrypt = require("bcrypt")
@@ -48,6 +48,10 @@ class User {
 		return this.user.starter
 	}
 
+	get face () {
+		return this.user.face
+	}
+
 
 
 
@@ -59,7 +63,7 @@ class User {
 	}
 
 	static all (email, callback) {
-		connection.query("SELECT * FROM users", [email], (error, users) => {
+		connection.query("SELECT * FROM users", (error, users) => {
 			if (error) throw error
 			callback(users)
 		})

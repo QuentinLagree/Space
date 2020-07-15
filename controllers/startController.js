@@ -24,6 +24,11 @@ let startup = (app) => {
 		.post((request, response) => {
 			require("./functions/startFunc")(request, response)
 		})
+
+		app.route("/start/face/:uuid")
+			.get((request, response) => {
+				require("./functions/faceFunc")(request, response)
+			})
 }
 
 module.exports = startup

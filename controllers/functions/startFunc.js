@@ -17,7 +17,6 @@ let start = (request, response) => {
 		} else {
 			User.startUpdate(request.body.name, request.body.firstname, request.body.day, request.body.month, request.body.year, request.body.country, request.body.password, request.session.mail, () => {
 				User.findByEmail(request.session.mail, (user) => {
-					console.log(user)
 					request.session.user = user
 					request.session.starter = true
 					response.redirect("/profile/" + user.uuid)

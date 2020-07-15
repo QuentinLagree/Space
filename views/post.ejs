@@ -1,0 +1,26 @@
+<%- include("./template/header.ejs") -%>
+
+<div class="container manager <%= data.manager %>">
+	<h1>Nouveau Message</h1>
+	<form action="/post/new" method="POST">
+		<textarea name="message" placeholder="Ecrit ton message..."></textarea>
+		<button>Ajouter un nouveau message</button>
+	</form>
+	<% if (typeof data.messages !== "undefined") {%>
+		<div class="comments">
+		<% for (let message of data.messages) {%>
+			<div class="comment">
+				<div class="top">
+					<p><%= message.author %></p>
+					<p class="created_at"><%= message.created_at %></p>
+				</div>
+				<div class="bottom">
+				<p><%= message.content %></p>
+				</div>
+			</div>
+		<% } %>
+		</div>
+	<% } %>
+</div>
+
+<%- include("./template/footer.ejs") -%>

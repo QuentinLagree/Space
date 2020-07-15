@@ -5,7 +5,11 @@ let profile = (app) => {
 		})
 	app.route("/profile/:uuid")
 		.get((request, response) => {
-			require("./functions/profileFindFunc")(request, response)
+			if (request.session.connect === undefined) {
+				response.redirect("/login")
+			} else {
+				require("./functions/FindByUuidFunc")(request, response, "profile")
+			}
 		})
 }
 

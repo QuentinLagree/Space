@@ -1,3 +1,38 @@
+textarea {
+	width: 50vw;
+	height: 15vh;
+	resize: none;
+	padding: 15px; 
+	color: #141313;
+	font-size: 20px;
+	border-color: #444;
+	outline: none;
+	transition: .3s;
+	font-family: "Roboto", sans-serif;
+}
+
+textarea:focus {
+	border-color: #2FB4F9;
+}
+
+button, form button {
+	width: 150px;
+	padding: 15px 0;
+	border: 1px solid #2FB4F9;
+	outline: none;
+	text-transform: uppercase;
+	color: #2FB4F9;
+	font-weight: 700;
+	cursor: pointer;
+	transition: .3s;
+}
+
+button:hover {
+	background: #2FB4F9;
+	border: 1px solid #2FB4F9;
+	color: #fff;
+}
+
 .error {
 	border-color: #EB2424 !important;
 }
@@ -40,6 +75,10 @@ body.manager div.container.manager {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+}
+
+body.manager div.container.manager.newPost {
+	margin: 2% auto 0 auto !important;
 }
 
 body.manager div.container.manager p.baseline {
@@ -103,28 +142,22 @@ body.manager form input[type="date"] {
 body.manager form input:focus { border-color: #2FB4F9; }
 
 body.manager form button {
-	width: 150px;
-	padding: 15px 0;
+	width: 100%;
+	padding: 15px;
 	background: none;
 	border: 1px solid #2FB4F9;
 	outline: none;
 	margin-top: 15px;
-	text-transform: uppercase;
-	color: #2FB4F9;
-	font-weight: 700;
-	cursor: pointer;
-	transition: .3s;
+	
+}
+
+body.manager form button:hover {
+	background: #2FB4F9;
 }
 
 body.manager form button.center {
 	position: absolute;
 	right: 0;
-}
-
-body.manager form button:hover {
-	background: #2FB4F9;
-	border: 1px solid #2FB4F9;
-	color: #fff;
 }
 
 body.manager form button:active {
@@ -293,4 +326,80 @@ input.inputPassConfirm {
 .togglePassShow path { transition: .3s; }
 .togglePassHide path { transition: .3s; }
 
-.hide { display: none; }
+.hide { display: none; }*
+
+.contain {
+	position: relative;
+    margin: 5% auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    height: 36px;
+}
+
+.contain div {
+	position: relative; 
+	width: 50%;
+	height: 100%;
+} 
+
+.comments {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	word-wrap: break-word;
+	height: 30vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.comments .comment {
+	display: flex;
+	flex-direction: column;
+	width: 95%;
+	padding: 0 0 10px 0;
+	margin: 0 5px 0 5px;
+}
+
+.comments .comment .top {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.comments .comment .bottom {
+	width: 100%;
+}
+
+.comments .comment .top .created_at {
+	color: #464646;
+}
+
+.comments .comment .bottom p {
+	position: absolute;
+	margin: 0;
+	font-weight: 600; 
+	max-width: 100%;
+	word-wrap: break-word;
+}
+
+.comments::-webkit-scrollbar {
+	width: 2px;
+}
+
+.comments::-webkit-scrollbar-track {
+  background: #fff; 
+}
+
+ 
+.comments::-webkit-scrollbar-thumb {
+	margin-right: 2px;
+	border-radius: 20px;
+	background: #2FB4F9; 
+}
+
+.comments .comment {
+	border-bottom: 1px solid #2FB4F9;
+}

@@ -4,13 +4,15 @@ function controllers(app) {
 	let logoutAccount = require("./logoutController")
 	let startAccount = require("./startController")
 	let profile = require("./profileController") 
-	let errorPageNotFound = require("./errorPageNotFoundController") 
+	let errorPageNotFound = require("./errorPageNotFoundController")
+	let postAdd = require("./postController")
 
 	loginAccount(app)
 	registerAccount(app)
 	logoutAccount(app)
 	startAccount(app)
 	profile(app)
+	postAdd(app)
 	errorPageNotFound(app)
 }
 

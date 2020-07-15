@@ -1,10 +1,9 @@
 let logout = (request, response) => {
 	if (request.body.logout === "no") {
-		response.redirect("/profile")
+		response.redirect("/profile/" + request.session.user["user"].uuid)
 	} else {
-		request.session.connect = false
+		request.session.connect = undefined
 		request.session.user = undefined
-		request.session.starter = null
 		response.redirect("/")
 	}
 }

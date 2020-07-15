@@ -1,9 +1,9 @@
-let findProfile = (request, response) => {
+let findProfile = (request, response, path) => {
 	let User;
 	let uuid = request.params.uuid
 
 	if (uuid === "" || uuid === undefined) {
-		response.redirect("/logout")
+		response.redirect("/login")
 	} else {
 		User = require("../../models/User")
 		User.findByUuid(uuid, (user) => {
@@ -13,7 +13,7 @@ let findProfile = (request, response) => {
 				request.session.user = user
 				let data = {
 					user: request.session.user,
-					manager: 'profile'
+					manager: path
 				}
 				response.render("account", {data: data})
 			}

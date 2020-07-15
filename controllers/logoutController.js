@@ -1,7 +1,7 @@
 logout = (app) => {
 	app.route("/logout")
 		.get((request, response) => {
-			if (request.session.connect === false) {
+			if (request.session.connect === undefined) {
 				response.redirect("/login")
 			} else {
 				let data = {
