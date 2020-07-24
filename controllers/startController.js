@@ -4,7 +4,8 @@ let startup = (app) => {
 	app.route("/start")
 		.get((request, response) => {
 			if (request.session.connect === true) {
-				if (request.session.starter === null) {
+				console.log(request.session.user["user"].starter)
+				if (request.session.user["user"].starter !== 1) {
 					let data = {
 						manager: 'start',
 						months: months.fr, 
@@ -17,7 +18,7 @@ let startup = (app) => {
 					response.redirect("/profile/" + request.session.user["user"].uuid)
 				}
 				
-			} else {
+			} else {regis
 				response.redirect("/login")
 			}
 		})

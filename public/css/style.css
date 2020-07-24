@@ -1,3 +1,41 @@
+div.options {
+	z-index: 9999;
+	width: auto;
+	height: auto;
+	position: absolute;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	background-color: #fff;
+	text-align: center;
+	border-radius: 10%;
+}				
+
+div.options ul {
+	margin: 0;
+	padding: 10px 15px;
+}
+
+div.options ul li {
+	list-style-type: none;
+	margin: 5px 0;
+}
+
+div.options ul li a {
+	color: #464646;
+	text-decoration: none;
+}
+
+div.options ul li a:hover {
+	text-decoration: underline;
+}
+
+.green-txt {
+	color: #20ab2e !important;
+}
+
+.red-txt {
+	color: #d61111 !important;
+}
+
 textarea {
 	width: 50vw;
 	height: 15vh;
@@ -340,49 +378,41 @@ input.inputPassConfirm {
 }
 
 .contain div {
-	position: relative; 
 	width: 50%;
 	height: 100%;
 } 
 
 .comments {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	word-wrap: break-word;
-	height: 30vh;
-	overflow-x: hidden;
+	margin-top: 10px;
 	overflow-y: scroll;
+	max-height: 30vh;
 }
 
 .comments .comment {
 	display: flex;
 	flex-direction: column;
-	width: 95%;
-	padding: 0 0 10px 0;
-	margin: 0 5px 0 5px;
+	max-width: calc(50vw + 30px);
+	padding: 0 10px 0 10px;
+	border-bottom: 2px solid #2FB4F9;
 }
 
-.comments .comment .top {
+.comments .comment .information {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
-.comments .comment .bottom {
-	width: 100%;
+.comments .comment .information .name {
+	font-size: 18px;
 }
 
-.comments .comment .top .created_at {
-	color: #464646;
+.comments .comment .information .created_at {
+	font-size: 15px;
 }
 
-.comments .comment .bottom p {
-	position: absolute;
-	margin: 0;
-	font-weight: 600; 
-	max-width: 100%;
+.comments .comment .message {
 	word-wrap: break-word;
+	padding-bottom: 0px; 
 }
 
 .comments::-webkit-scrollbar {
@@ -400,6 +430,54 @@ input.inputPassConfirm {
 	background: #2FB4F9; 
 }
 
-.comments .comment {
-	border-bottom: 1px solid #2FB4F9;
+.comments .comment .actionContain {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	position: relative;
+}
+
+.comments .comment .actionContain div.actions {
+	position: relative;
+	display: flex;
+	margin-bottom: 5px;
+	flex-direction: row;
+	justify-content: flex-end;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.comments .comment .actionContain div.actions svg {
+	margin: auto auto;
+	border-radius: 100%;
+	width: 15px;
+	height: 15px;
+	transform: scale(0.9); 
+}
+
+.comments .comment .actionContain div.actions svg path {
+	fill: #000;
+}
+
+.comments .comment .actionContain div.actions span.effect {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #000;
+	pointer-events: none;
+	animation: effect 0.5s linear infinite;
+}
+
+@keyframes effect {
+	0% { 
+		transform: scale(0);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(1.2);
+		opacity: 0;
+	}
 }

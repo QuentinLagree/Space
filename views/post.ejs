@@ -1,4 +1,11 @@
 <%- include("./template/header.ejs") -%>
+<div class="options">
+	<ul>
+		<li><a href="#">Signaler</a></li>
+		<li><a class="green-txt" href="">Modifier</a></li>
+		<li><a class="red-txt" href="">Supprimer</a></li>
+	</ul>
+</div>
 
 <div class="container manager <%= data.manager %>">
 	<h1>Nouveau Message</h1>
@@ -10,17 +17,33 @@
 		<div class="comments">
 		<% for (let message of data.messages) {%>
 			<div class="comment">
-				<div class="top">
-					<p><%= message.author %></p>
-					<p class="created_at"><%= message.created_at %></p>
+				<div class="information">
+					<h1 class="name"><%= message.author %></h1>
+					<h2 class="created_at"><%= message.created_at %></h2>
 				</div>
-				<div class="bottom">
-				<p><%= message.content %></p>
+				<p class="message"><%= message.content %></p>
+				<div class="actionContain">
+					<div class="actions"> 
+						<svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="ellipsis-h" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-ellipsis-h fa-w-16 fa-3x"><path d="M304 256c0 26.5-21.5 48-48 48s-48-21.5-48-48 21.5-48 48-48 48 21.5 48 48zm120-48c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48zm-336 0c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z" class=""></path></svg>
+					</div>
 				</div>
 			</div>
 		<% } %>
 		</div>
 	<% } %>
 </div>
+<script type="text/javascript">
+	let icons = document.querySelectorAll(".actions");
+	for (let i = 0; i < icons.length; i++) {
+		icons[i].addEventListener("click", () => {
+			let effect = document.createElement("span")
+			effect.classList.add("effect")
+			icons[i].appendChild(effect)
+			setTimeout(() => {
+				icons[i].removeChild(effect)
+			}, 500)
+		})
+	}
+</script>
 
 <%- include("./template/footer.ejs") -%>

@@ -48,11 +48,6 @@ class User {
 		return this.user.starter
 	}
 
-	get face () {
-		return this.user.face
-	}
-
-
 
 
 	static create (email, callback) {
